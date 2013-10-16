@@ -33,7 +33,7 @@
 //// from http://www.opencores.org/lgpl.shtml                     ////
 ////                                                              ////
 //////////////////////////////////////////////////////////////////////
-`include "orpsoc-defines.v"
+`include "arbiter_defines.v"
 // 2 Masters, a few slaves
 module arbiter_dbus
   (

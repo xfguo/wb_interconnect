@@ -44,7 +44,7 @@
 // 5. Slave input mux logic
 // 6. The four different master out mux logics (dat_o mux, and ack, rty & err)
 //
-`include "orpsoc-defines.v"
+`include "arbiter_defines.v"
 module arbiter_bytebus
   (
 

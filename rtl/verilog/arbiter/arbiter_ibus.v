@@ -34,7 +34,7 @@
 //// from http://www.opencores.org/lgpl.shtml                     ////
 ////                                                              ////
 //////////////////////////////////////////////////////////////////////
-`include "orpsoc-defines.v"
+`include "arbiter_defines.v"
 // One master, 2 slaves.
 module arbiter_ibus
   (
