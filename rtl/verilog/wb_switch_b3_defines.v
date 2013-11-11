@@ -1,0 +1,3 @@
+`define NUM_MASTERS_1
+`define NUM_SLAVES_3
+`define WATCHDOG_TIMER
