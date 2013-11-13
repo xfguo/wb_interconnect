@@ -1,9 +1,46 @@
+`include "wb_switch_b3_defines.v"
+
 // Switch network arbiter
 // Wishbone B3 signals compliant 
+`ifndef NUM_MASTERS_6
+ `ifndef NUM_MASTERS_5
+  `ifndef NUM_MASTERS_4
+   `ifndef NUM_MASTERS_3
+    `ifndef NUM_MASTERS_2
+     `ifndef NUM_MASTERS_1
 
-`define NUM_MASTERS_4
-`define NUM_SLAVES_5
-`define WATCHDOG_TIMER
+      `define NUM_MASTERS_1
+
+     `endif // NUM_MASTER_1
+    `endif // NUM_MASTER_2
+   `endif // NUM_MASTER_3
+  `endif // NUM_MASTER_4
+ `endif // NUM_MASTER_5
+`endif // NUM_MASTER_6
+
+`ifndef NUM_SLAVES_8
+ `ifndef NUM_SLAVES_7
+  `ifndef NUM_SLAVES_6
+   `ifndef NUM_SLAVES_5
+    `ifndef NUM_SLAVES_4
+     `ifndef NUM_SLAVES_3
+      `ifndef NUM_SLAVES_2
+       `ifndef NUM_SLAVES_1
+
+        `define NUM_SLAVES_3
+
+       `endif // NUM_SLAVES_1
+      `endif // NUM_SLAVES_2
+     `endif // NUM_SLAVES_3
+    `endif // NUM_SLAVES_4
+   `endif // NUM_SLAVES_5
+  `endif // NUM_SLAVES_6
+ `endif // NUM_SLAVES_7
+`endif // NUM_SLAVES_8
+
+`ifndef WATCHDOC_TIMER
+ `define WATCHDOG_TIMER
+`endif
 
 `ifdef NUM_MASTERS_6
  `define NUM_MASTERS 6
