@@ -856,10 +856,16 @@ module arbiter_dbus
    wire [wb_num_slaves-1:0]  wb_slave_sel;
    reg [wb_num_slaves-1:0]   wb_slave_sel_r;
 
+
+`ifdef ARBITER_DBUS_REGISTERING
    // Register wb_slave_sel_r to break combinatorial loop when selecting default
    // slave
    always @(posedge wb_clk)
      wb_slave_sel_r <= wb_slave_sel;
+`else // !`ifdef ARBITER_DBUS_REGISTERING
+   always @(*)
+     wb_slave_sel_r = wb_slave_sel;
+`endif // !`ifdef ARBITER_DBUS_REGISTERING
    
    // Slave out mux in wires   
    wire [wb_dat_width-1:0]   wbs_dat_o_mux_i [0:wb_num_slaves-1];
@@ -870,10 +876,10 @@ module arbiter_dbus
    //
    // Slave selects
    //
-   assign wb_slave_sel[0] = wbm_adr_o[31:28] == slave0_adr | wbm_adr_o[31:28] == 4'hf; // Special case, point all reads to ROM address to here
+   assign wb_slave_sel[0] = wbm_adr_o[31:28] == slave0_adr/* | wbm_adr_o[31:28] == 4'hf; // Special case, point all reads to ROM address to here*/;
    
    // Auto select last slave when others are not selected
-   assign wb_slave_sel[1] = !(wb_slave_sel_r[0]);
+   assign wb_slave_sel[1] = !(wb_slave_sel[0]);
 
 /*
    assign wb_slave_sel[1] = wbm_adr_o[`WB_ARB_ADDR_MATCH_SEL] == slave1_adr;

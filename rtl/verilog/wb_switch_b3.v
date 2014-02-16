@@ -2552,6 +2552,7 @@ module wb_b3_switch_master_out_mux
    always @(posedge wb_clk) 
      watchdog_err <= (&watchdog_timer);
 
+// synthesis off
    always @(posedge watchdog_err)
      begin
 	$display("%t: %m - Watchdog counter error",$time);
@@ -2561,6 +2562,7 @@ module wb_b3_switch_master_out_mux
 	else
 	  $display("%t: %m - NO slave was selected by switch - either bad address or arbiter hadn't granted a access to a locked slave", $time);
      end
+// synthesis on
    
 `else
    wire 		   watchdog_err;
